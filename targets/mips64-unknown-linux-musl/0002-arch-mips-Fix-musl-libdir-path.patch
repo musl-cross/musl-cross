@@ -1,0 +1,31 @@
+From 60035f32545b9c5acaa69fbee260e80216af2472 Mon Sep 17 00:00:00 2001
+From: hev <r@hev.cc>
+Date: Sun, 17 Mar 2024 14:49:11 +0800
+Subject: [PATCH] arch/mips: Fix musl libdir path
+
+---
+ scripts/build/arch/mips.sh | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/scripts/build/arch/mips.sh b/scripts/build/arch/mips.sh
+index acb88511..d95b37ff 100644
+--- a/scripts/build/arch/mips.sh
++++ b/scripts/build/arch/mips.sh
+@@ -98,4 +98,14 @@ CT_DoArchMUSLPostInstall() {
+     if [ ! -r "${CT_HEADERS_DIR}/sgidefs.h" ]; then
+         echo "#include <asm/sgidefs.h> // Redirected by ct-ng" > "${CT_HEADERS_DIR}/sgidefs.h"
+     fi
++
++    if [ "${CT_ARCH_64}" = "y" ]; then
++        # Workaround to fix libdir path
++        if [ ! -e "${CT_SYSROOT_DIR}/lib64" ]; then
++            ln -sf lib ${CT_SYSROOT_DIR}/lib64
++        fi
++        if [ ! -e "${CT_SYSROOT_DIR}/usr/lib64" ]; then
++            ln -sf lib ${CT_SYSROOT_DIR}/usr/lib64
++        fi
++    fi
+ }
+-- 
+2.44.0
+

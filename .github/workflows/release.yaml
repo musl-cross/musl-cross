@@ -1,0 +1,42 @@
+name: Release
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        target:
+          - aarch64-unknown-linux-musl
+          - arm-unknown-linux-musleabi
+          - arm-unknown-linux-musleabihf
+          - loongarch64-unknown-linux-musl
+          - mips64el-unknown-linux-musl
+          - mips64-unknown-linux-musl
+          - mipsel-unknown-linux-musl
+          - mips-unknown-linux-musl
+          - riscv32-unknown-linux-musl
+          - riscv64-unknown-linux-musl
+          - x86_64-multilib-linux-musl
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+          submodules: true
+      - name: Build ${{ matrix.target }}
+        run: ./scripts/make ${{ matrix.target }}
+      - name: Upload ${{ matrix.target }}
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ${{ matrix.target }}.tgz
+          asset_name: ${{ matrix.target }}.tgz
+          asset_content_type: application/octet-stream

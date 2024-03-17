@@ -1,0 +1,68 @@
+#!/bin/bash
+
+set -e
+
+TARGET=$1
+
+# packages
+sudo apt-get update
+sudo apt-get install -y --no-install-recommends \
+  automake \
+  bison \
+  bzip2 \
+  ca-certificates \
+  curl \
+  file \
+  flex \
+  g++ \
+  gawk \
+  gdb \
+  git \
+  gperf \
+  help2man \
+  libncurses-dev \
+  libssl-dev \
+  libtool-bin \
+  make \
+  patch \
+  pkg-config \
+  python3 \
+  rsync \
+  texinfo \
+  unzip \
+  wget \
+  xz-utils
+
+# patch
+pushd builder
+for i in ../targets/${TARGET}/*; do
+    if [[ $i == *.patch ]]; then
+        patch -Np1 -i $i
+    fi
+done
+popd
+
+# crosstool-ng
+if [ ! -e /usr/bin/ct-ng ]; then
+    pushd builder
+    ./bootstrap
+    ./configure --prefix=/usr
+    make -j`nproc`
+    sudo make install
+    popd
+fi
+
+# build
+sudo mkdir -p /opt
+sudo chmod 0777 /opt
+mkdir -p build
+cp targets/${TARGET}/config build/.config
+pushd build
+ct-ng olddefconfig
+ct-ng build
+popd
+
+# tarball
+sudo mv /opt/x-tools/${TARGET} .
+sudo chown -R root:root ${TARGET}
+sudo tar czf ${TARGET}.tgz ${TARGET}
