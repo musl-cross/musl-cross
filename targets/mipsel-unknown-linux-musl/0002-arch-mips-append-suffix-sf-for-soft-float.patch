@@ -1,0 +1,27 @@
+From 2dc5c388f41f3842014cbfb9cae8366f46333132 Mon Sep 17 00:00:00 2001
+From: hev <r@hev.cc>
+Date: Mon, 27 May 2024 12:11:25 +0800
+Subject: [PATCH] arch/mips: append suffix sf for soft float
+
+---
+ scripts/build/arch/mips.sh | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/scripts/build/arch/mips.sh b/scripts/build/arch/mips.sh
+index acb88511..8283d802 100644
+--- a/scripts/build/arch/mips.sh
++++ b/scripts/build/arch/mips.sh
+@@ -13,6 +13,10 @@ CT_DoArchTupleValues() {
+     # Override ABI flags
+     CT_ARCH_ABI_CFLAG="-mabi=${CT_ARCH_mips_ABI}"
+     CT_ARCH_WITH_ABI="--with-abi=${CT_ARCH_mips_ABI}"
++
++    if [ "${CT_ARCH_FLOAT}" = "soft" ]; then
++        CT_TARGET_SYS="${CT_TARGET_SYS}sf"
++    fi
+ }
+ 
+ CT_DoArchUClibcConfig() {
+-- 
+2.25.1
+
