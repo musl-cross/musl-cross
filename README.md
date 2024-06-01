@@ -16,6 +16,8 @@ This is a simple, lightweight project for making cross-compilation toolchain wit
 | mips-unknown-linux-muslsf      | 4.4.302 | 2.42     | 14.1.0 | 1.2.5 |
 | mips64el-unknown-linux-musl    | 4.4.302 | 2.42     | 14.1.0 | 1.2.5 |
 | mips64-unknown-linux-musl      | 4.4.302 | 2.42     | 14.1.0 | 1.2.5 |
+| powerpc-unknown-linux-musl     | 4.4.302 | 2.42     | 14.1.0 | 1.2.5 |
+| powerpc64-unknown-linux-musl   | 4.4.302 | 2.42     | 14.1.0 | 1.2.5 |
 | riscv32-unknown-linux-musl     | 4.15.18 | 2.42     | 14.1.0 | 1.2.5 |
 | riscv64-unknown-linux-musl     | 4.15.18 | 2.42     | 14.1.0 | 1.2.5 |
 | x86_64-multilib-linux-musl     | 4.4.302 | 2.42     | 14.1.0 | 1.2.5 |
