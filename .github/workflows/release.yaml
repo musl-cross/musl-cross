@@ -17,6 +17,8 @@ jobs:
           - arm-unknown-linux-musleabihf
           - loongarch64-unknown-linux-musl
           - m68k-unknown-linux-musl
+          - microblazeel-xilinx-linux-musl
+          - microblaze-xilinx-linux-musl
           - mipsel-unknown-linux-musl
           - mipsel-unknown-linux-muslsf
           - mips-unknown-linux-musl
