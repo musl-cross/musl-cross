@@ -10,6 +10,7 @@ This is a simple, lightweight project for making cross-compilation toolchain wit
 | arm-unknown-linux-musleabi     | 4.4.302 | 2.42     | 14.1.0 | 1.2.5 |
 | arm-unknown-linux-musleabihf   | 4.4.302 | 2.42     | 14.1.0 | 1.2.5 |
 | loongarch64-unknown-linux-musl | 5.19.16 | 2.42     | 14.1.0 | 1.2.5 |
+| m68k-unknown-linux-musl        | 4.4.302 | 2.42     | 14.1.0 | 1.2.5 |
 | mipsel-unknown-linux-musl      | 4.4.302 | 2.42     | 14.1.0 | 1.2.5 |
 | mipsel-unknown-linux-muslsf    | 4.4.302 | 2.42     | 14.1.0 | 1.2.5 |
 | mips-unknown-linux-musl        | 4.4.302 | 2.42     | 14.1.0 | 1.2.5 |
