@@ -29,6 +29,7 @@ jobs:
           - powerpc64-unknown-linux-musl
           - riscv32-unknown-linux-musl
           - riscv64-unknown-linux-musl
+          - s390x-ibm-linux-musl
           - x86_64-multilib-linux-musl
     steps:
       - name: Checkout
