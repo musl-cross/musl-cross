@@ -39,7 +39,9 @@ jobs:
           fetch-depth: 1
           submodules: true
       - name: Build ${{ matrix.target }}
-        run: ./scripts/make ${{ matrix.target }}
+        run: |
+          sudo rm -rf /opt/*
+          ./scripts/make ${{ matrix.target }}
       - name: Upload ${{ matrix.target }}
         uses: actions/upload-release-asset@v1
         env:
