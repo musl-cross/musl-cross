@@ -9,6 +9,8 @@ This is a simple, lightweight project for making cross-compilation toolchain wit
 | aarch64-unknown-linux-musl     | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5 |
 | arm-unknown-linux-musleabi     | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5 |
 | arm-unknown-linux-musleabihf   | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5 |
+| armv7-unknown-linux-musleabi   | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5 |
+| armv7-unknown-linux-musleabihf | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5 |
 | loongarch64-unknown-linux-musl | 5.19.16 | 2.43.1   | 14.2.0 | 1.2.5 |
 | m68k-unknown-linux-musl        | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5 |
 | microblazeel-xilinx-linux-musl | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5 |

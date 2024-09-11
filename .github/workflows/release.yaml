@@ -15,6 +15,8 @@ jobs:
           - aarch64-unknown-linux-musl
           - arm-unknown-linux-musleabi
           - arm-unknown-linux-musleabihf
+          - armv7-unknown-linux-musleabi
+          - armv7-unknown-linux-musleabihf
           - loongarch64-unknown-linux-musl
           - m68k-unknown-linux-musl
           - microblazeel-xilinx-linux-musl
