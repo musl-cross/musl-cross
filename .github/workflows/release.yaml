@@ -34,6 +34,7 @@ jobs:
           - s390x-ibm-linux-musl
           - sh-multilib-linux-musl
           - x86_64-multilib-linux-musl
+          - x86_64-w64-mingw32
     steps:
       - name: Checkout
         uses: actions/checkout@v2
