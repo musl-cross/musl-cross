@@ -20,6 +20,7 @@ jobs:
           - armv7-unknown-linux-musleabi
           - armv7-unknown-linux-musleabihf
           - i686-unknown-linux-musl
+          - i686-w64-mingw32
           - loongarch64-unknown-linux-musl
           - m68k-unknown-linux-musl
           - microblazeel-xilinx-linux-musl
