@@ -1,6 +1,7 @@
 name: Release
 
 on:
+  workflow_dispatch:
   release:
     types:
       - published
@@ -66,6 +67,7 @@ jobs:
     runs-on: ubuntu-20.04
     needs:
       - build
+    if: github.event_name == 'release'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
