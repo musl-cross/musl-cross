@@ -10,6 +10,7 @@ jobs:
     name: Build
     runs-on: ubuntu-20.04
     strategy:
+      fail-fast: true
       matrix:
         target:
           - aarch64-unknown-linux-musl
@@ -37,20 +38,57 @@ jobs:
           - x86_64-w64-mingw32
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 1
           submodules: true
-      - name: Build ${{ matrix.target }}
+      - name: Build
         run: |
           sudo rm -rf /opt/*
           ./scripts/make ${{ matrix.target }}
-      - name: Upload ${{ matrix.target }}
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload package
+        uses: actions/upload-artifact@v4
         with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ${{ matrix.target }}.tgz
-          asset_name: ${{ matrix.target }}.tgz
-          asset_content_type: application/octet-stream
+          name: ${{ matrix.target }}.tar.xz
+          path: ${{ matrix.target }}.tar.xz
+          if-no-files-found: error
+          retention-days: 1
+      - name: Upload checksum
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.target }}.tar.xz.sha256
+          path: ${{ matrix.target }}.tar.xz.sha256
+          if-no-files-found: error
+          retention-days: 1
+
+  release:
+    name: Release
+    runs-on: ubuntu-20.04
+    needs:
+      - build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: release
+          pattern: "*.tar.*"
+          merge-multiple: true
+      - name: Generate checksums
+        run: |
+          echo "| Filename | Sha256sum |" > RELEASE.md
+          echo "| -------- | --------- |" >> RELEASE.md
+          for i in release/*.sha256; do
+            echo "| $(basename $i .sha256) | $(cat $i) |" >> RELEASE.md
+          done
+      - name: Upload artifacts
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for i in release/*.tar.xz; do
+            gh release upload ${{ github.event.release.tag_name }} $i $i.sha256
+          done
+          gh release edit ${{ github.event.release.tag_name }} -F RELEASE.md

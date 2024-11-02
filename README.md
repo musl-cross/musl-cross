@@ -36,7 +36,7 @@ Download the tarball from the [release page](https://github.com/musl-cross/musl-
 
 ```sh
 sudo mkdir -p /opt/x-tools
-sudo tar -xf ${target}.tgz -C /opt/x-tools
+sudo tar -xf ${target}.tar.xz -C /opt/x-tools
 ```
 
 ## How to build
