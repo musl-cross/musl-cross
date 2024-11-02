@@ -11,6 +11,7 @@ This is a simple, lightweight project for making cross-compilation toolchain wit
 | arm-unknown-linux-musleabihf   | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5  |
 | armv7-unknown-linux-musleabi   | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5  |
 | armv7-unknown-linux-musleabihf | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5  |
+| i686-unknown-linux-musl        | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5  |
 | loongarch64-unknown-linux-musl | 5.19.16 | 2.43.1   | 14.2.0 | 1.2.5  |
 | m68k-unknown-linux-musl        | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5  |
 | microblazeel-xilinx-linux-musl | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5  |
@@ -27,7 +28,7 @@ This is a simple, lightweight project for making cross-compilation toolchain wit
 | riscv64-unknown-linux-musl     | 4.15.18 | 2.43.1   | 14.2.0 | 1.2.5  |
 | s390x-ibm-linux-musl           | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5  |
 | sh-multilib-linux-musl         | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5  |
-| x86_64-multilib-linux-musl     | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5  |
+| x86_64-unknown-linux-musl      | 4.4.302 | 2.43.1   | 14.2.0 | 1.2.5  |
 | x86_64-w64-mingw32             |         | 2.43.1   | 14.2.0 | 12.0.0 |
 
 ## How to use
