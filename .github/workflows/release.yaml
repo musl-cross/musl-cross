@@ -19,6 +19,7 @@ jobs:
           - arm-unknown-linux-musleabihf
           - armv7-unknown-linux-musleabi
           - armv7-unknown-linux-musleabihf
+          - i586-unknown-linux-musl
           - i686-unknown-linux-musl
           - i686-w64-mingw32
           - loongarch64-unknown-linux-musl
